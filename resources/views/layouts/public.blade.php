@@ -13,6 +13,10 @@
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('m-logo.png') }}">
+    
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -26,12 +30,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
             
             <!-- Logo -->
-            <a href="{{ route('careers.home') }}" class="flex items-center gap-2 group">
-                <div class="w-10 h-10 rounded-xl bg-[#FF6B00] flex items-center justify-center text-white font-extrabold text-xl shadow-[0_0_15px_rgba(255,107,0,0.5)] transition duration-300 group-hover:scale-105">
-                    M
-                </div>
+            <a href="{{ route('careers.home') }}" class="flex items-center gap-3 group">
+                <img src="{{ asset('logo.png') }}" alt="Munchify Logo" class="h-10 w-auto object-contain transition duration-300 group-hover:scale-105">
                 <div class="flex flex-col">
-                    <span class="font-extrabold tracking-tight text-lg leading-none">Munchify</span>
+                    <span class="font-extrabold tracking-tight text-lg leading-none text-white">Munchify</span>
                     <span class="text-[10px] text-[#FFD233] uppercase tracking-wider font-semibold">Careers Portal</span>
                 </div>
             </a>

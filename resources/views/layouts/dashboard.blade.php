@@ -13,6 +13,10 @@
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('m-logo.png') }}">
+    
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -26,13 +30,11 @@
            :class="sidebarOpen ? 'translate-x-0' : '-translate-x-64'">
         
         <!-- Sidebar Logo Header -->
-        <div class="p-6 border-b border-white/5 flex items-center justify-between">
-            <a href="{{ route('dashboard.overview') }}" class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-lg bg-[#FF6B00] flex items-center justify-center text-white font-extrabold text-lg">
-                    M
-                </div>
+        <div class="p-5 border-b border-white/5 flex items-center justify-between">
+            <a href="{{ route('dashboard.overview') }}" class="flex items-center gap-3">
+                <img src="{{ asset('m-logo.png') }}" alt="Munchify Mark" class="w-8 h-8 rounded-lg object-contain">
                 <div class="flex flex-col">
-                    <span class="font-extrabold tracking-tight text-sm">Munchify Recruiter</span>
+                    <span class="font-extrabold tracking-tight text-sm text-white">Munchify Recruiter</span>
                     <span class="text-[9px] text-[#FFD233] uppercase tracking-wider font-semibold">Workspace</span>
                 </div>
             </a>
