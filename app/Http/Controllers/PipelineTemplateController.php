@@ -82,7 +82,22 @@ class PipelineTemplateController extends Controller
             $q->orderBy('sort_order');
         }])->findOrFail($id);
 
-        return view('dashboard.pipelines.edit', compact('template'));
+        $stagesData = $template->stages->map(function ($stage) {
+            return [
+                'id' => $stage->id,
+                'name' => $stage->name,
+                'description' => $stage->description,
+                'color' => $stage->color,
+                'auto_notify_candidate' => (bool) $stage->auto_notify_candidate,
+                'is_terminal_pass' => (bool) $stage->is_terminal_pass,
+                'is_terminal_fail' => (bool) $stage->is_terminal_fail,
+            ];
+        })->values()->toArray();
+
+        return view('dashboard.pipelines.edit', [
+            'template' => $template,
+            'stagesJson' => json_encode($stagesData),
+        ]);
     }
 
     public function update(Request $request, $id)
