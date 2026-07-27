@@ -45,6 +45,7 @@ class SmsService
                     'mobile' => $normalizedPhone,
                     'message' => $message,
                     'msg' => $message,
+                    'msgType' => 'text',
                 ]);
 
                 if ($response->successful()) {
