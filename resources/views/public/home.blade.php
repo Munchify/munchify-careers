@@ -5,69 +5,46 @@
 @section('content')
 <!-- HERO SECTION -->
 <section class="bg-white py-16 md:py-24 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <!-- Left Text Content -->
-            <div class="lg:col-span-7 space-y-6 text-left">
-                <div class="inline-flex items-center gap-2 bg-[#FFF7ED] border border-[#FFEDD5] rounded-full py-1.5 px-4 text-xs font-bold text-[#FF6B00]">
-                    <span class="w-2 h-2 rounded-full bg-[#FF6B00] animate-pulse"></span>
-                    <span>Maseno University Hiring Drive 2026</span>
-                </div>
-
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-[#111318] tracking-tight leading-[1.15]">
-                    Earn, Learn & Grow with <span class="text-[#FF6B00]">Munchify Campus Fleet</span>
-                </h1>
-
-                <p class="text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl font-normal">
-                    Join Kenya’s premier university food delivery platform. Flexible shifts designed around your lecture timetable, weekly M-Pesa payouts, and real leadership growth.
-                </p>
-
-                <!-- Actions -->
-                <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
-                    <a href="#open-positions" class="btn btn-primary btn-lg w-full sm:w-auto font-bold px-8 shadow-lg shadow-[#FF6B00]/20">
-                        View Open Roles <i class="fa-solid fa-arrow-down ml-1"></i>
-                    </a>
-                    <a href="#" @click.prevent="openTrackModal()" class="btn btn-secondary btn-lg w-full sm:w-auto font-bold px-8">
-                        Track My Application <i class="fa-solid fa-location-crosshairs ml-1 text-[#FF6B00]"></i>
-                    </a>
-                </div>
-
-                <!-- Trust signals strip -->
-                <div class="pt-8 border-t border-gray-100 grid grid-cols-3 gap-6 text-left">
-                    <div>
-                        <span class="block text-2xl font-extrabold text-[#111318]">10,000+</span>
-                        <span class="text-xs text-gray-500 font-medium">Orders Delivered</span>
-                    </div>
-                    <div>
-                        <span class="block text-2xl font-extrabold text-[#FF6B00]">Flexible</span>
-                        <span class="text-xs text-gray-500 font-medium">Student Shifts</span>
-                    </div>
-                    <div>
-                        <span class="block text-2xl font-extrabold text-[#111318]">Weekly</span>
-                        <span class="text-xs text-gray-500 font-medium">M-Pesa Payouts</span>
-                    </div>
-                </div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="space-y-6 max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 bg-[#FFF7ED] border border-[#FFEDD5] rounded-full py-1.5 px-4 text-xs font-bold text-[#FF6B00]">
+                <span class="w-2 h-2 rounded-full bg-[#FF6B00] animate-pulse"></span>
+                <span>Maseno University Hiring Drive 2026</span>
             </div>
 
-            <!-- Right Hero Image Banner -->
-            <div class="lg:col-span-5 relative">
-                <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-gray-100">
-                    <img src="{{ asset('images/hero_rider.jpg') }}" alt="Munchify Delivery Rider at Maseno Campus" class="w-full h-[420px] object-cover">
-                    
-                    <!-- Floating badge -->
-                    <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-gray-100 shadow-xl flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-[#FF6B00] text-white flex items-center justify-center font-bold shrink-0">
-                            <i class="fa-solid fa-motorcycle text-lg"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-extrabold text-xs text-[#111318]">Maseno Logistics Team</h4>
-                            <p class="text-[11px] text-gray-500">Pick up orders at partner kitchens & deliver on campus.</p>
-                        </div>
-                    </div>
-                </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-[#111318] tracking-tight leading-[1.15]">
+                Earn, Learn & Grow with <span class="text-[#FF6B00]">Munchify Campus Fleet</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-gray-600 leading-relaxed font-normal">
+                Join Kenya’s premier university food delivery platform. Flexible shifts designed around your lecture timetable, weekly M-Pesa payouts, and real leadership growth.
+            </p>
+
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+                <a href="#open-positions" class="btn btn-primary btn-lg w-full sm:w-auto font-bold px-8 shadow-lg shadow-[#FF6B00]/20">
+                    View Open Roles <i class="fa-solid fa-arrow-down ml-1"></i>
+                </a>
+                <a href="#" @click.prevent="openTrackModal()" class="btn btn-secondary btn-lg w-full sm:w-auto font-bold px-8">
+                    Track My Application <i class="fa-solid fa-location-crosshairs ml-1 text-[#FF6B00]"></i>
+                </a>
             </div>
 
+            <!-- Trust signals strip -->
+            <div class="pt-10 mt-10 border-t border-gray-100 grid grid-cols-3 gap-6 max-w-2xl mx-auto">
+                <div>
+                    <span class="block text-2xl font-extrabold text-[#111318]">10,000+</span>
+                    <span class="text-xs text-gray-500 font-medium">Orders Delivered</span>
+                </div>
+                <div>
+                    <span class="block text-2xl font-extrabold text-[#FF6B00]">Flexible</span>
+                    <span class="text-xs text-gray-500 font-medium">Student Shifts</span>
+                </div>
+                <div>
+                    <span class="block text-2xl font-extrabold text-[#111318]">Weekly</span>
+                    <span class="text-xs text-gray-500 font-medium">M-Pesa Payouts</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
