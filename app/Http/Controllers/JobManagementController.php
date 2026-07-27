@@ -356,4 +356,45 @@ class JobManagementController extends Controller
             'responsibilities' => $responsibilities,
         ]);
     }
+
+    public function aiGenerateQuestions(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+        ]);
+
+        $title = trim($validated['title']);
+        $role = strtolower($title);
+
+        if (str_contains($role, 'rider') || str_contains($role, 'driver') || str_contains($role, 'delivery') || str_contains($role, 'courier')) {
+            $questions = [
+                ['question' => 'Do you have a valid driver\'s/rider\'s license and helmet?', 'type' => 'boolean', 'knockout' => true, 'expected' => '1', 'min' => null],
+                ['question' => 'Are you familiar with Maseno University campus halls and routes?', 'type' => 'boolean', 'knockout' => false, 'expected' => '1', 'min' => null],
+                ['question' => 'How many years of active motorcycle riding experience do you have?', 'type' => 'number', 'knockout' => true, 'expected' => null, 'min' => 1],
+            ];
+        } elseif (str_contains($role, 'kitchen') || str_contains($role, 'chef') || str_contains($role, 'cook') || str_contains($role, 'baker')) {
+            $questions = [
+                ['question' => 'Do you possess a valid Food Handler Medical Certificate?', 'type' => 'boolean', 'knockout' => true, 'expected' => '1', 'min' => null],
+                ['question' => 'How many years of commercial kitchen experience do you have?', 'type' => 'number', 'knockout' => true, 'expected' => null, 'min' => 1],
+                ['question' => 'Are you available to work weekend or evening shifts?', 'type' => 'boolean', 'knockout' => false, 'expected' => '1', 'min' => null],
+            ];
+        } elseif (str_contains($role, 'developer') || str_contains($role, 'engineer') || str_contains($role, 'software') || str_contains($role, 'tech')) {
+            $questions = [
+                ['question' => 'Do you have active experience building web apps with Laravel or modern PHP?', 'type' => 'boolean', 'knockout' => false, 'expected' => '1', 'min' => null],
+                ['question' => 'How many years of professional software development experience do you have?', 'type' => 'number', 'knockout' => true, 'expected' => null, 'min' => 2],
+                ['question' => 'Provide a link to your GitHub profile or online portfolio.', 'type' => 'text', 'knockout' => false, 'expected' => null, 'min' => null],
+            ];
+        } else {
+            $questions = [
+                ['question' => 'Are you legally authorized to work in Kenya?', 'type' => 'boolean', 'knockout' => true, 'expected' => '1', 'min' => null],
+                ['question' => 'How many years of relevant work experience do you have for this role?', 'type' => 'number', 'knockout' => false, 'expected' => null, 'min' => 1],
+                ['question' => 'What is your notice period / available start date?', 'type' => 'text', 'knockout' => false, 'expected' => null, 'min' => null],
+            ];
+        }
+
+        return response()->json([
+            'success' => true,
+            'questions' => $questions,
+        ]);
+    }
 }

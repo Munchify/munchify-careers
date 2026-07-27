@@ -179,9 +179,16 @@
                     <h3 class="font-extrabold text-sm text-[#111318] flex items-center gap-2">
                         <i class="fa-solid fa-circle-question text-[#FF6B00]"></i> Screening Questions
                     </h3>
-                    <button type="button" @click="addQuestion()" class="btn btn-secondary btn-sm py-1.5 px-4 font-bold text-[11px] rounded-full">
-                        <i class="fa-solid fa-plus text-[9px]"></i> Add Question
-                    </button>
+                    <div class="flex items-center gap-2">
+                        <button type="button" @click="generateAiQuestions()" :disabled="generatingAiQuestions" class="btn bg-gradient-to-r from-[#FF6B00] to-[#E05D00] text-white btn-sm py-1.5 px-3.5 font-bold text-[11px] rounded-full flex items-center gap-1.5 shadow-sm hover:opacity-90 transition">
+                            <i class="fa-solid fa-wand-magic-sparkles text-[#FFD233]" x-show="!generatingAiQuestions"></i>
+                            <i class="fa-solid fa-circle-notch fa-spin text-white" x-show="generatingAiQuestions" style="display: none;"></i>
+                            <span x-text="generatingAiQuestions ? 'Generating...' : 'AI Suggest Questions'"></span>
+                        </button>
+                        <button type="button" @click="addQuestion()" class="btn btn-secondary btn-sm py-1.5 px-4 font-bold text-[11px] rounded-full">
+                            <i class="fa-solid fa-plus text-[9px]"></i> Add Question
+                        </button>
+                    </div>
                 </div>
 
                 <div class="space-y-4">
@@ -324,6 +331,7 @@
             requirements: '',
             responsibilities: '',
             generatingAi: false,
+            generatingAiQuestions: false,
             addQuestion() {
                 this.screeningQuestions.push({
                     question: '',
@@ -335,6 +343,36 @@
             },
             removeQuestion(index) {
                 this.screeningQuestions.splice(index, 1);
+            },
+            async generateAiQuestions() {
+                const titleInput = document.getElementById('title')?.value?.trim();
+                if (!titleInput) {
+                    alert('Please enter a Job Title first so the AI bot can suggest relevant questions.');
+                    return;
+                }
+                this.generatingAiQuestions = true;
+                
+                try {
+                    const response = await fetch('/dashboard/jobs/ai-generate-questions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({ title: titleInput })
+                    });
+                    
+                    const data = await response.json();
+                    if (data.success && data.questions) {
+                        this.screeningQuestions = data.questions;
+                    } else {
+                        alert(data.message || 'Failed to suggest questions.');
+                    }
+                } catch (e) {
+                    alert('Error connecting to AI assistant.');
+                } finally {
+                    this.generatingAiQuestions = false;
+                }
             },
             async generateAiContent() {
                 const titleInput = document.getElementById('title')?.value?.trim();
