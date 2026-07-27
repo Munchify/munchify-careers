@@ -159,92 +159,164 @@
 </section>
 
 <!-- TESTIMONIALS SECTION -->
-<section class="py-20 bg-[#F9FAFB] border-t border-gray-200">
+<section class="py-24 bg-gradient-to-b from-[#F8FAFC] to-white border-t border-gray-200/80 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="text-center max-w-2xl mx-auto mb-14">
-            <span class="text-xs font-bold text-[#FF6B00] uppercase tracking-wider block mb-2">Team Leadership & Voices</span>
-            <h2 class="text-3xl font-extrabold text-[#111318] tracking-tight">Meet the Team Behind Munchify</h2>
-            <p class="text-sm text-gray-500 mt-2">Hear directly from the leadership and fleet members driving operations at Maseno Campus.</p>
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="inline-flex items-center gap-1.5 bg-[#FFF7ED] border border-[#FFEDD5] rounded-full py-1 px-3.5 text-[11px] font-extrabold text-[#FF6B00] mb-3 uppercase tracking-wider">
+                <i class="fa-solid fa-sparkles text-[10px]"></i> Team Leadership & Voices
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-[#111318] tracking-tight">Meet the Team Behind Munchify</h2>
+            <p class="text-sm text-gray-500 mt-2">Hear directly from the leaders and fleet members powering campus logistics at Maseno.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Review 1: Dan -->
-            <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between hover:border-[#FF6B00] transition">
-                <p class="text-xs text-gray-600 leading-relaxed italic mb-6">
-                    "Our dispatch strategy centers around speed, order safety, and absolute customer delight across every corner of Maseno Campus."
-                </p>
-                <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
-                    <div class="w-10 h-10 rounded-full bg-[#FF6B00] text-white flex items-center justify-center font-extrabold text-xs">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Card 1: Dan (Head of Delivery) -->
+            <div class="bg-white rounded-3xl p-8 border border-gray-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-[#FF6B00]/40 transition-all duration-300 flex flex-col justify-between relative group">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-[#FF6B00] text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="badge bg-[#FFF7ED] text-[#FF6B00] border border-[#FFEDD5] text-[10px] font-bold">Delivery & Fleet</span>
+                    </div>
+
+                    <p class="text-xs text-gray-600 leading-relaxed font-normal">
+                        "Our dispatch strategy centers around speed, order safety, and absolute customer delight across every corner of Maseno Campus."
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-3.5 pt-6 mt-6 border-t border-gray-100">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FF6B00] to-[#E05D00] text-white flex items-center justify-center font-extrabold text-sm shadow-md shadow-[#FF6B00]/20 group-hover:scale-105 transition">
                         D
                     </div>
                     <div>
-                        <h4 class="font-extrabold text-xs text-[#111318]">Dan</h4>
-                        <span class="text-[10px] text-gray-500 font-semibold block">Head of Delivery</span>
+                        <h4 class="font-extrabold text-sm text-[#111318] group-hover:text-[#FF6B00] transition">Dan</h4>
+                        <span class="text-[11px] text-gray-500 font-semibold block">Head of Delivery</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Review 2: Cliff -->
-            <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between hover:border-[#FF6B00] transition">
-                <p class="text-xs text-gray-600 leading-relaxed italic mb-6">
-                    "We build seamless operational workflows linking kitchen partners directly with our fleet to guarantee instant dispatch times."
-                </p>
-                <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
-                    <div class="w-10 h-10 rounded-full bg-[#111318] text-[#FFD233] flex items-center justify-center font-extrabold text-xs">
+            <!-- Card 2: Cliff (Head of Operations) -->
+            <div class="bg-white rounded-3xl p-8 border border-gray-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-[#FF6B00]/40 transition-all duration-300 flex flex-col justify-between relative group">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-[#FF6B00] text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="badge bg-gray-100 text-gray-800 text-[10px] font-bold">Operations</span>
+                    </div>
+
+                    <p class="text-xs text-gray-600 leading-relaxed font-normal">
+                        "We build seamless operational workflows linking kitchen partners directly with our fleet to guarantee instant dispatch times."
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-3.5 pt-6 mt-6 border-t border-gray-100">
+                    <div class="w-12 h-12 rounded-2xl bg-[#111318] text-[#FFD233] flex items-center justify-center font-extrabold text-sm shadow-md group-hover:scale-105 transition">
                         C
                     </div>
                     <div>
-                        <h4 class="font-extrabold text-xs text-[#111318]">Cliff</h4>
-                        <span class="text-[10px] text-gray-500 font-semibold block">Head of Operations</span>
+                        <h4 class="font-extrabold text-sm text-[#111318] group-hover:text-[#FF6B00] transition">Cliff</h4>
+                        <span class="text-[11px] text-gray-500 font-semibold block">Head of Operations</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Review 3: Potmo -->
-            <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between hover:border-[#FF6B00] transition">
-                <p class="text-xs text-gray-600 leading-relaxed italic mb-6">
-                    "Financial transparency and guaranteed weekly payouts empower our team members to focus on growth and excellent service."
-                </p>
-                <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
-                    <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-extrabold text-xs">
+            <!-- Card 3: Potmo (Head of Finance) -->
+            <div class="bg-white rounded-3xl p-8 border border-gray-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-[#FF6B00]/40 transition-all duration-300 flex flex-col justify-between relative group">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-[#FF6B00] text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="badge bg-emerald-50 text-emerald-700 border border-emerald-100 text-[10px] font-bold">Finance & Payroll</span>
+                    </div>
+
+                    <p class="text-xs text-gray-600 leading-relaxed font-normal">
+                        "Financial transparency and guaranteed weekly payouts empower our team members to focus on growth and excellent service."
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-3.5 pt-6 mt-6 border-t border-gray-100">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center font-extrabold text-sm shadow-md shadow-emerald-500/20 group-hover:scale-105 transition">
                         P
                     </div>
                     <div>
-                        <h4 class="font-extrabold text-xs text-[#111318]">Potmo</h4>
-                        <span class="text-[10px] text-gray-500 font-semibold block">Head of Finance</span>
+                        <h4 class="font-extrabold text-sm text-[#111318] group-hover:text-[#FF6B00] transition">Potmo</h4>
+                        <span class="text-[11px] text-gray-500 font-semibold block">Head of Finance</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Review 4: Jesee -->
-            <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between hover:border-[#FF6B00] transition">
-                <p class="text-xs text-gray-600 leading-relaxed italic mb-6">
-                    "Engineering intelligent recruitment algorithms and real-time tracking dashboards ensures seamless experience for candidates and recruiters."
-                </p>
-                <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
-                    <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-extrabold text-xs">
+            <!-- Card 4: Jesee (Head of IT) -->
+            <div class="bg-white rounded-3xl p-8 border border-gray-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-[#FF6B00]/40 transition-all duration-300 flex flex-col justify-between relative group">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-[#FF6B00] text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="badge bg-blue-50 text-blue-700 border border-blue-100 text-[10px] font-bold">Tech & Systems</span>
+                    </div>
+
+                    <p class="text-xs text-gray-600 leading-relaxed font-normal">
+                        "Engineering intelligent recruitment algorithms and real-time tracking dashboards ensures seamless experience for candidates and recruiters."
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-3.5 pt-6 mt-6 border-t border-gray-100">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center font-extrabold text-sm shadow-md shadow-blue-600/20 group-hover:scale-105 transition">
                         J
                     </div>
                     <div>
-                        <h4 class="font-extrabold text-xs text-[#111318]">Jesee</h4>
-                        <span class="text-[10px] text-gray-500 font-semibold block">Head of IT</span>
+                        <h4 class="font-extrabold text-sm text-[#111318] group-hover:text-[#FF6B00] transition">Jesee</h4>
+                        <span class="text-[11px] text-gray-500 font-semibold block">Head of IT</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Review 5: Derick -->
-            <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between hover:border-[#FF6B00] transition">
-                <p class="text-xs text-gray-600 leading-relaxed italic mb-6">
-                    "Riding with Munchify gives me total flexibility around my schedule, dependable income, and a team that always has my back."
-                </p>
-                <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
-                    <div class="w-10 h-10 rounded-full bg-[#FEF3C7] text-amber-800 flex items-center justify-center font-extrabold text-xs">
+            <!-- Card 5: Derick (Delivery Driver) -->
+            <div class="bg-white rounded-3xl p-8 border border-gray-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-[#FF6B00]/40 transition-all duration-300 flex flex-col justify-between relative group">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1 text-[#FF6B00] text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="badge bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-bold">Campus Fleet</span>
+                    </div>
+
+                    <p class="text-xs text-gray-600 leading-relaxed font-normal">
+                        "Riding with Munchify gives me total flexibility around my schedule, dependable income, and a team that always has my back."
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-3.5 pt-6 mt-6 border-t border-gray-100">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-500 text-gray-900 flex items-center justify-center font-extrabold text-sm shadow-md group-hover:scale-105 transition">
                         D
                     </div>
                     <div>
-                        <h4 class="font-extrabold text-xs text-[#111318]">Derick</h4>
-                        <span class="text-[10px] text-gray-500 font-semibold block">Delivery Driver</span>
+                        <h4 class="font-extrabold text-sm text-[#111318] group-hover:text-[#FF6B00] transition">Derick</h4>
+                        <span class="text-[11px] text-gray-500 font-semibold block">Delivery Driver</span>
                     </div>
                 </div>
             </div>
