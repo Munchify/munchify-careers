@@ -12,12 +12,13 @@ class NotificationTemplateSeeder extends Seeder
         $templates = [
             [
                 'event_key' => 'application_received',
-                'name' => 'Application Received',
+                'name' => 'Application Received Confirmation',
                 'email_subject' => 'Application Received: {job_title} ({app_number})',
                 'email_body' => "Thank you for applying for the position of {job_title} at Munchify. Your application number is {app_number}.\n\nYou can track the real-time status of your application anytime at:\n{status_url}\n\nOur hiring team will review your application and update you on the next steps.",
-                'sms_body' => 'Hi {name}, we have received your application for {job_title} ({app_number}). Track your status at {status_url} - Munchify Careers.',
+                'sms_body' => 'Thank you for applying for {job_title} at Munchify. App #: {app_number}. Track status: {status_url}',
                 'whatsapp_body' => "Hello *{name}*! 👋\n\nThank you for applying for the position of *{job_title}* at Munchify. Your application number is *{app_number}*.\n\nYou can track the progress of your application in real-time here:\n{status_url}\n\nWe will review your profile and get back to you soon!\n\nBest regards,\n*Munchify Recruitment Team*",
-                'description' => 'Sent automatically when a candidate submits a new application.',
+                'whatsapp_template_name' => 'app_received_v1',
+                'description' => 'Sent automatically to candidate upon submitting a new job application.',
             ],
             [
                 'event_key' => 'stage_moved',
