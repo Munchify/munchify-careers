@@ -86,6 +86,15 @@ class SmsService
     }
 
     /**
+     * Alias for send() method.
+     */
+    public function sendSms(string $phone, string $message, ?int $applicationId = null, ?int $sentById = null): bool
+    {
+        $result = $this->send($phone, $message, $applicationId, $sentById);
+        return $result['success'];
+    }
+
+    /**
      * Ensure phone is in format e.g. 2547XXXXXXXX
      */
     protected function normalizeForSms(string $phone): string
