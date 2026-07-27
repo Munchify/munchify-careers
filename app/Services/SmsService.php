@@ -40,6 +40,7 @@ class SmsService
                     'username' => $partnerId,
                     'userid' => $partnerId,
                     'apikey' => $apiKey,
+                    'password' => $apiKey,
                     'sender' => $senderId,
                     'mobile' => $normalizedPhone,
                     'message' => $message,
@@ -48,7 +49,11 @@ class SmsService
 
                 if ($response->successful()) {
                     $responseDetails = $response->json() ?? ['raw' => $response->body()];
-                    $status = 'delivered';
+                    if (isset($responseDetails['status']) && strtolower($responseDetails['status']) === 'error') {
+                        $status = 'failed';
+                    } else {
+                        $status = 'delivered';
+                    }
                 } else {
                     $status = 'failed';
                     $responseDetails = ['error' => $response->body()];
