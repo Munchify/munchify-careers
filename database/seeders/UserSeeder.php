@@ -12,9 +12,9 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
-                'full_name' => 'Munchify Admin',
-                'email' => 'admin@munchify.com',
-                'password' => Hash::make('password'),
+                'full_name' => 'Charles Valtron',
+                'email' => 'charlesvaltron@gmail.com',
+                'password' => Hash::make('Manuu@20'),
                 'role' => 'admin',
                 'department' => 'Executive',
                 'is_active' => true,
