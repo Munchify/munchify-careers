@@ -104,15 +104,17 @@ class SettingsController extends Controller
 
         try {
             $smsService = app(\App\Services\SmsService::class);
-            $success = $smsService->sendSms(
+            $result = $smsService->send(
                 $validated['test_phone'],
                 'Munchify Careers Gateway Test: Hostpinnacle SMS integration is working successfully.'
             );
 
-            if ($success) {
+            if ($result['success']) {
                 return redirect()->route('settings.index')->with('success', 'Test SMS dispatched successfully to ' . $validated['test_phone']);
             } else {
-                return redirect()->back()->withErrors(['error' => 'Hostpinnacle SMS API returned failure. Check logs or gateway credentials.']);
+                $reason = $result['details']['reason'] ?? $result['details']['error'] ?? 'Invalid API credentials or response';
+                $code = $result['details']['statusCode'] ?? 'error';
+                return redirect()->back()->withErrors(['error' => "Hostpinnacle SMS API returned failure [Code {$code}]: {$reason}"]);
             }
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Failed to send test SMS: ' . $e->getMessage()]);
