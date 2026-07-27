@@ -163,55 +163,88 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-2xl mx-auto mb-14">
-            <span class="text-xs font-bold text-[#FF6B00] uppercase tracking-wider block mb-2">Team Voices</span>
-            <h2 class="text-3xl font-extrabold text-[#111318] tracking-tight">Stories from Maseno Campus</h2>
+            <span class="text-xs font-bold text-[#FF6B00] uppercase tracking-wider block mb-2">Team Leadership & Voices</span>
+            <h2 class="text-3xl font-extrabold text-[#111318] tracking-tight">Meet the Team Behind Munchify</h2>
+            <p class="text-sm text-gray-500 mt-2">Hear directly from the leadership and fleet members driving operations at Maseno Campus.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Card 1 -->
-            <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Review 1: Dan -->
+            <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between hover:border-[#FF6B00] transition">
                 <p class="text-xs text-gray-600 leading-relaxed italic mb-6">
-                    "Working as a Munchify Rider at Maseno has allowed me to cover my day-to-day expenses while staying fully focused on my studies and classes."
+                    "Our dispatch strategy centers around speed, order safety, and absolute customer delight across every corner of Maseno Campus."
                 </p>
                 <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
-                    <div class="w-10 h-10 rounded-full bg-[#FF6B00] text-white flex items-center justify-center font-bold text-xs">
-                        EO
+                    <div class="w-10 h-10 rounded-full bg-[#FF6B00] text-white flex items-center justify-center font-extrabold text-xs">
+                        D
                     </div>
                     <div>
-                        <h4 class="font-extrabold text-xs text-[#111318]">Evans Onyango</h4>
-                        <span class="text-[10px] text-gray-400 font-semibold">Delivery Rider & Student</span>
+                        <h4 class="font-extrabold text-xs text-[#111318]">Dan</h4>
+                        <span class="text-[10px] text-gray-500 font-semibold block">Head of Delivery</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 2 -->
-            <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
+            <!-- Review 2: Cliff -->
+            <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between hover:border-[#FF6B00] transition">
                 <p class="text-xs text-gray-600 leading-relaxed italic mb-6">
-                    "Joining Munchify customer care helped me sharpen my communication and problem-solving skills in a high-energy campus environment."
+                    "We build seamless operational workflows linking kitchen partners directly with our fleet to guarantee instant dispatch times."
                 </p>
                 <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
-                    <div class="w-10 h-10 rounded-full bg-[#FEF3C7] text-amber-800 flex items-center justify-center font-bold text-xs">
-                        MK
+                    <div class="w-10 h-10 rounded-full bg-[#111318] text-[#FFD233] flex items-center justify-center font-extrabold text-xs">
+                        C
                     </div>
                     <div>
-                        <h4 class="font-extrabold text-xs text-[#111318]">Mercy Koech</h4>
-                        <span class="text-[10px] text-gray-400 font-semibold">Customer Support Desk</span>
+                        <h4 class="font-extrabold text-xs text-[#111318]">Cliff</h4>
+                        <span class="text-[10px] text-gray-500 font-semibold block">Head of Operations</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 3 -->
-            <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
+            <!-- Review 3: Potmo -->
+            <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between hover:border-[#FF6B00] transition">
                 <p class="text-xs text-gray-600 leading-relaxed italic mb-6">
-                    "Developing logistics software for Munchify gave me real hands-on experience building production software systems for real users."
+                    "Financial transparency and guaranteed weekly payouts empower our team members to focus on growth and excellent service."
                 </p>
                 <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
-                    <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-xs">
-                        DN
+                    <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-extrabold text-xs">
+                        P
                     </div>
                     <div>
-                        <h4 class="font-extrabold text-xs text-[#111318]">Daniel Njuguna</h4>
-                        <span class="text-[10px] text-gray-400 font-semibold">Software Developer</span>
+                        <h4 class="font-extrabold text-xs text-[#111318]">Potmo</h4>
+                        <span class="text-[10px] text-gray-500 font-semibold block">Head of Finance</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 4: Jesee -->
+            <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between hover:border-[#FF6B00] transition">
+                <p class="text-xs text-gray-600 leading-relaxed italic mb-6">
+                    "Engineering intelligent recruitment algorithms and real-time tracking dashboards ensures seamless experience for candidates and recruiters."
+                </p>
+                <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-extrabold text-xs">
+                        J
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold text-xs text-[#111318]">Jesee</h4>
+                        <span class="text-[10px] text-gray-500 font-semibold block">Head of IT</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 5: Derick -->
+            <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between hover:border-[#FF6B00] transition">
+                <p class="text-xs text-gray-600 leading-relaxed italic mb-6">
+                    "Riding with Munchify gives me total flexibility around my schedule, dependable income, and a team that always has my back."
+                </p>
+                <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
+                    <div class="w-10 h-10 rounded-full bg-[#FEF3C7] text-amber-800 flex items-center justify-center font-extrabold text-xs">
+                        D
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold text-xs text-[#111318]">Derick</h4>
+                        <span class="text-[10px] text-gray-500 font-semibold block">Delivery Driver</span>
                     </div>
                 </div>
             </div>
