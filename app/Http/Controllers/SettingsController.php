@@ -121,6 +121,66 @@ class SettingsController extends Controller
         }
     }
 
+    public function testTemplate(Request $request)
+    {
+        if (!Auth::user()->isAdmin()) {
+            return redirect()->back()->withErrors(['error' => 'Only Admins can test templates.']);
+        }
+
+        $validated = $request->validate([
+            'template_id' => 'required|exists:notification_templates,id',
+            'channel' => 'required|in:email,sms',
+            'recipient' => 'required|string',
+        ]);
+
+        $template = NotificationTemplate::findOrFail($validated['template_id']);
+
+        // Dummy values for template placeholders
+        $replacements = [
+            '{name}' => 'Charles Valtron',
+            '{job_title}' => 'Full-Stack Developer Lead',
+            '{app_number}' => 'APP-2026-001',
+            '{status_url}' => 'https://careers.munchify.co.ke/application/track/01kyjd1g8',
+            '{stage_name}' => 'Technical Assessment',
+            '{scheduled_at}' => 'Tomorrow at 10:00 AM',
+            '{type}' => 'Online Video Call',
+            '{details}' => 'Please ensure your camera and microphone are operational.',
+        ];
+
+        if ($validated['channel'] === 'email') {
+            $subject = strtr($template->email_subject, $replacements);
+            $body = strtr($template->email_body, $replacements);
+
+            try {
+                \Illuminate\Support\Facades\Mail::raw($body, function ($message) use ($validated, $subject) {
+                    $message->to($validated['recipient'])
+                            ->subject("[TEMPLATE TEST] " . $subject);
+                });
+
+                return redirect()->route('settings.index')->with('success', "Test email for template '{$template->name}' dispatched to {$validated['recipient']}.");
+            } catch (\Exception $e) {
+                return redirect()->back()->withErrors(['error' => "Failed to dispatch test template email: " . $e->getMessage()]);
+            }
+        } else {
+            $smsBody = strtr($template->sms_body, $replacements);
+
+            try {
+                $smsService = app(\App\Services\SmsService::class);
+                $result = $smsService->send($validated['recipient'], $smsBody);
+
+                if ($result['success']) {
+                    return redirect()->route('settings.index')->with('success', "Test SMS for template '{$template->name}' dispatched to {$validated['recipient']}.");
+                } else {
+                    $reason = $result['details']['reason'] ?? $result['details']['error'] ?? 'Invalid API credentials';
+                    $code = $result['details']['statusCode'] ?? 'error';
+                    return redirect()->back()->withErrors(['error' => "Hostpinnacle SMS API failure [Code {$code}]: {$reason}"]);
+                }
+            } catch (\Exception $e) {
+                return redirect()->back()->withErrors(['error' => "Failed to dispatch test template SMS: " . $e->getMessage()]);
+            }
+        }
+    }
+
     public function saveTeamUser(Request $request)
     {
         $userId = $request->input('id');

@@ -281,6 +281,29 @@
                             <span class="text-[10px] text-orange-600 font-bold block"><i class="fa-solid fa-mobile-screen"></i> SMS Gateway Body (Hostpinnacle):</span>
                             <p class="text-gray-700 bg-orange-50/20 border border-orange-100 p-3 rounded-lg leading-relaxed whitespace-pre-wrap">{{ $tmpl->sms_body }}</p>
                         </div>
+
+                        <!-- Template Test Actions -->
+                        <div class="flex gap-2 pt-2 border-t border-gray-100">
+                            <form action="{{ route('settings.test-template') }}" method="POST" class="flex-1">
+                                @csrf
+                                <input type="hidden" name="template_id" value="{{ $tmpl->id }}">
+                                <input type="hidden" name="channel" value="email">
+                                <input type="hidden" name="recipient" value="charlesvaltron@gmail.com">
+                                <button type="submit" class="btn btn-secondary btn-sm py-1.5 px-3 text-[10px] font-bold rounded-xl w-full border-blue-200 text-blue-700 hover:bg-blue-50">
+                                    <i class="fa-solid fa-paper-plane mr-1"></i> Test Email
+                                </button>
+                            </form>
+
+                            <form action="{{ route('settings.test-template') }}" method="POST" class="flex-1">
+                                @csrf
+                                <input type="hidden" name="template_id" value="{{ $tmpl->id }}">
+                                <input type="hidden" name="channel" value="sms">
+                                <input type="hidden" name="recipient" value="0758335592">
+                                <button type="submit" class="btn btn-secondary btn-sm py-1.5 px-3 text-[10px] font-bold rounded-xl w-full border-orange-200 text-orange-700 hover:bg-orange-50">
+                                    <i class="fa-solid fa-comments mr-1"></i> Test SMS
+                                </button>
+                            </form>
+                        </div>
                     </div>
 
                     <!-- Edit mode form -->

@@ -132,6 +132,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
         Route::post('/gateways', [SettingsController::class, 'saveGateways'])->name('settings.gateways.save');
         Route::post('/test-email', [SettingsController::class, 'testEmail'])->name('settings.test-email');
         Route::post('/test-sms', [SettingsController::class, 'testSms'])->name('settings.test-sms');
+        Route::post('/test-template', [SettingsController::class, 'testTemplate'])->name('settings.test-template');
     });
 
     // Audit Log (Admin only)
