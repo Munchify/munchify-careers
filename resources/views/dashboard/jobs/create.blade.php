@@ -79,8 +79,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <!-- Openings slots -->
                     <div>
-                        <label for="slots" class="form-label">Slots Available <span class="text-red-500">*</span></label>
+                        <label for="slots" class="form-label">Vacancies / Positions Available <span class="text-red-500">*</span></label>
                         <input type="number" name="slots" id="slots" class="form-input text-xs" value="1" min="1" required>
+                        <span class="form-help block text-[10px] text-gray-400 mt-1">Number of candidates to hire. <strong>Any number of candidates can apply</strong>.</span>
                     </div>
 
                     <!-- Deadline -->
