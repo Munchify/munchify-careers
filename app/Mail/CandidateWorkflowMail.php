@@ -15,15 +15,17 @@ class CandidateWorkflowMail extends Mailable
     public string $subjectText;
     public string $bodyContent;
     public string $candidateName;
+    public ?string $actionUrl;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(string $subjectText, string $bodyContent, string $candidateName = '')
+    public function __construct(string $subjectText, string $bodyContent, string $candidateName = '', ?string $actionUrl = null)
     {
         $this->subjectText = $subjectText;
         $this->bodyContent = $bodyContent;
         $this->candidateName = $candidateName;
+        $this->actionUrl = $actionUrl;
     }
 
     /**
@@ -42,11 +44,12 @@ class CandidateWorkflowMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.candidate_workflow',
+            view: 'emails.candidate_workflow',
             with: [
-                'subjectText' => $this->subjectText,
-                'bodyContent' => $this->bodyContent,
                 'candidateName' => $this->candidateName,
+                'bodyContent' => $this->bodyContent,
+                'subjectContent' => $this->subjectText,
+                'actionUrl' => $this->actionUrl ?? 'https://careers.munchify.co.ke',
             ],
         );
     }

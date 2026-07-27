@@ -152,10 +152,9 @@ class SettingsController extends Controller
             $body = strtr($template->email_body, $replacements);
 
             try {
-                \Illuminate\Support\Facades\Mail::raw($body, function ($message) use ($validated, $subject) {
-                    $message->to($validated['recipient'])
-                            ->subject("[TEMPLATE TEST] " . $subject);
-                });
+                \Illuminate\Support\Facades\Mail::to($validated['recipient'])->send(
+                    new \App\Mail\CandidateWorkflowMail($subject, $body, 'Charles Valtron')
+                );
 
                 return redirect()->route('settings.index')->with('success', "Test email for template '{$template->name}' dispatched to {$validated['recipient']}.");
             } catch (\Exception $e) {
