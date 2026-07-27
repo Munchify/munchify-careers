@@ -397,4 +397,21 @@ class JobManagementController extends Controller
             'questions' => $questions,
         ]);
     }
+
+    public function destroy($id)
+    {
+        $job = JobListing::findOrFail($id);
+
+        AuditLog::log(
+            actorId: Auth::id(),
+            action: 'job_deleted',
+            entityType: JobListing::class,
+            entityId: $job->id,
+            details: ['title' => $job->title]
+        );
+
+        $job->delete();
+
+        return redirect()->route('jobs.manage')->with('success', "Job opening '{$job->title}' deleted successfully.");
+    }
 }
