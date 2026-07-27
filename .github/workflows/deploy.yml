@@ -25,7 +25,8 @@ jobs:
             git pull origin main
             composer install --no-dev --optimize-autoloader
             php artisan migrate --force
-            sudo chmod -R 777 database storage bootstrap/cache
+            sudo sed -i 's|DB_DATABASE=.*|DB_DATABASE=/www/wwwroot/careers.munchify.co.ke/database/database.sqlite|g' .env
             sudo chown -R www:www database storage
+            sudo chmod -R 777 database storage
             php artisan config:clear
             php artisan cache:clear
