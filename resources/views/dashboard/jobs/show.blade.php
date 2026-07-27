@@ -30,6 +30,13 @@
             <a href="{{ route('jobs.edit', ['id' => $job->id]) }}" class="btn btn-secondary btn-sm py-2 px-4 rounded-xl">
                 <i class="fa-solid fa-edit mr-1"></i> Edit Job
             </a>
+            
+            <form action="{{ route('jobs.delete', ['id' => $job->id]) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to permanently delete {{ addslashes($job->title) }}? This action cannot be undone.');">
+                @csrf
+                <button type="submit" class="btn btn-secondary btn-sm py-2 px-3 rounded-xl text-red-600 border-red-200 hover:bg-red-50" title="Delete Job Opening">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </form>
         @endif
     </div>
 </div>

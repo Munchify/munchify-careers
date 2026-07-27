@@ -118,6 +118,14 @@
                                                     <i class="fa-regular fa-copy text-[10px] mr-1"></i> Duplicate Listing
                                                 </button>
                                             </form>
+
+                                            <!-- Delete -->
+                                            <form action="{{ route('jobs.delete', ['id' => $job->id]) }}" method="POST" onsubmit="return confirm('Are you sure you want to permanently delete {{ addslashes($job->title) }}? This action cannot be undone.');">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item text-left w-full text-xs font-semibold text-red-600 hover:bg-red-50">
+                                                    <i class="fa-solid fa-trash-can text-[10px] mr-1"></i> Delete Opening
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 @endif

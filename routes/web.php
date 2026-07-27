@@ -62,6 +62,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
             Route::post('/{id}/edit', [JobManagementController::class, 'update']);
             Route::post('/{id}/status', [JobManagementController::class, 'updateStatus'])->name('jobs.status');
             Route::post('/{id}/duplicate', [JobManagementController::class, 'duplicate'])->name('jobs.duplicate');
+            Route::post('/{id}/delete', [JobManagementController::class, 'destroy'])->name('jobs.delete');
         });
 
         // Hiring / Interviewer / Viewer with job access: Kanban, detail view
