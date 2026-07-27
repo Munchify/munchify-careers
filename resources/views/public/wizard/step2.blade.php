@@ -38,21 +38,37 @@
                            value="{{ old('current_role', $wizardData['step2']['current_role'] ?? '') }}">
                 </div>
 
-                <!-- Experience years -->
-                <div>
-                    <label for="experience_years" class="form-label">Years of Experience (Optional)</label>
-                    <input type="text" name="experience_years" id="experience_years" 
-                           class="form-input" 
-                           placeholder="e.g. 1 Year, 6 Months, None" 
-                           value="{{ old('experience_years', $wizardData['step2']['experience_years'] ?? '') }}">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Course of Study -->
+                    <div>
+                        <label for="course_of_study" class="form-label">Course of Study (Optional)</label>
+                        <input type="text" name="course_of_study" id="course_of_study" 
+                               class="form-input" 
+                               placeholder="e.g. BSc Computer Science, Diploma in Logistics" 
+                               value="{{ old('course_of_study', $wizardData['step2']['course_of_study'] ?? '') }}">
+                    </div>
+
+                    <!-- Year of Study -->
+                    <div>
+                        <label for="year_of_study" class="form-label">Year of Study (Optional)</label>
+                        <select name="year_of_study" id="year_of_study" class="form-input">
+                            <option value="">-- Select Year of Study --</option>
+                            <option value="Year 1" {{ (old('year_of_study', $wizardData['step2']['year_of_study'] ?? '') == 'Year 1') ? 'selected' : '' }}>Year 1</option>
+                            <option value="Year 2" {{ (old('year_of_study', $wizardData['step2']['year_of_study'] ?? '') == 'Year 2') ? 'selected' : '' }}>Year 2</option>
+                            <option value="Year 3" {{ (old('year_of_study', $wizardData['step2']['year_of_study'] ?? '') == 'Year 3') ? 'selected' : '' }}>Year 3</option>
+                            <option value="Year 4" {{ (old('year_of_study', $wizardData['step2']['year_of_study'] ?? '') == 'Year 4') ? 'selected' : '' }}>Year 4</option>
+                            <option value="Postgraduate / Alumni" {{ (old('year_of_study', $wizardData['step2']['year_of_study'] ?? '') == 'Postgraduate / Alumni') ? 'selected' : '' }}>Postgraduate / Alumni</option>
+                            <option value="Not Applicable" {{ (old('year_of_study', $wizardData['step2']['year_of_study'] ?? '') == 'Not Applicable') ? 'selected' : '' }}>Not Applicable</option>
+                        </select>
+                    </div>
                 </div>
 
                 <!-- Skills -->
                 <div>
-                    <label for="skills" class="form-label">Key Skills (Optional)</label>
+                    <label for="skills" class="form-label">Key Skills & Competencies (Optional)</label>
                     <input type="text" name="skills" id="skills" 
                            class="form-input" 
-                           placeholder="e.g. Navigation, riding, Laravel, front-end, communication" 
+                           placeholder="e.g. Navigation, riding, customer service, communication" 
                            value="{{ old('skills', $wizardData['step2']['skills'] ?? '') }}">
                 </div>
 

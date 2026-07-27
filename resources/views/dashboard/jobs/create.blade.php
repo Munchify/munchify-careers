@@ -144,7 +144,7 @@
                     <!-- Requires CV -->
                     <div class="flex items-center justify-between">
                         <div class="flex flex-col">
-                            <span class="text-xs font-bold text-gray-800">Require CV / Resume</span>
+                            <span class="text-xs font-bold text-gray-800">Require Resume Upload</span>
                             <span class="text-[10px] text-gray-500">Require document upload.</span>
                         </div>
                         <label class="relative inline-flex items-center cursor-pointer">

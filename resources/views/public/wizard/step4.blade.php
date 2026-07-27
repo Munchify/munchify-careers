@@ -33,13 +33,13 @@
                 <!-- CV Upload -->
                 @if($job->requires_cv)
                     <div class="space-y-2">
-                        <label for="cv" class="form-label">Upload Curriculum Vitae (CV) <span class="text-red-500">*</span></label>
+                        <label for="cv" class="form-label">Upload Resume / Supporting Document <span class="text-red-500">*</span></label>
                         <input type="file" name="cv" id="cv" class="form-input p-2.5 text-xs" {{ empty($wizardData['step4']['cv_path']) ? 'required' : '' }}>
                         
                         @if(!empty($wizardData['step4']['cv_path']))
                             <div class="flex items-center gap-2 text-xs text-emerald-600 bg-emerald-50 border border-emerald-100 p-2.5 rounded-xl font-semibold">
                                 <i class="fa-solid fa-file-circle-check text-base"></i>
-                                <span>CV already uploaded: <a href="{{ Storage::url($wizardData['step4']['cv_path']) }}" target="_blank" class="underline hover:text-emerald-800 font-bold">View Document</a></span>
+                                <span>Document uploaded: <a href="{{ Storage::url($wizardData['step4']['cv_path']) }}" target="_blank" class="underline hover:text-emerald-800 font-bold">View Document</a></span>
                             </div>
                         @endif
                         <span class="form-help block">Accepted formats: PDF, DOC, DOCX. Max file size: 5MB.</span>
