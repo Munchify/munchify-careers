@@ -18,8 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PipelineTemplateSeeder::class,
             NotificationTemplateSeeder::class,
-            JobListingSeeder::class,
-            ApplicationSeeder::class,
+            SystemSettingSeeder::class,
         ]);
     }
 }
