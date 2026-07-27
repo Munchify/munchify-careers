@@ -72,13 +72,7 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <!-- Salary Range -->
-                    <div>
-                        <label for="salary_range" class="form-label">Salary Range / Compensation</label>
-                        <input type="text" name="salary_range" id="salary_range" class="form-input text-xs" placeholder="e.g. KES 20,000 - 30,000" value="{{ old('salary_range', $job->salary_range) }}">
-                    </div>
-
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <!-- Openings slots -->
                     <div>
                         <label for="slots" class="form-label">Slots Available <span class="text-red-500">*</span></label>
@@ -95,28 +89,42 @@
                 <!-- Primary textareas description/requirements/responsibilities -->
                 <div class="space-y-4">
                     <div>
-                        <label for="description" class="form-label">Job Description <span class="text-red-500">*</span></label>
-                        <textarea name="description" id="description" rows="5" class="form-input text-xs" placeholder="Outline the job description (Accepts HTML)..." required>{{ old('description', $job->description) }}</textarea>
+                        <label for="description" class="form-label">Job Description <span class="text-gray-400 font-normal">(Optional)</span></label>
+                        <textarea name="description" id="description" rows="3" class="form-input text-xs" placeholder="Briefly outline the job description (Optional)...">{{ old('description', $job->description) }}</textarea>
                     </div>
 
-                    <div>
-                        <label for="requirements" class="form-label">Requirements <span class="text-red-500">*</span></label>
-                        <textarea name="requirements" id="requirements" rows="4" class="form-input text-xs" placeholder="List the requirements (one per line, accepts HTML)..." required>{{ old('requirements', $job->requirements) }}</textarea>
-                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="requirements" class="form-label">Requirements <span class="text-gray-400 font-normal">(Optional)</span></label>
+                            <textarea name="requirements" id="requirements" rows="3" class="form-input text-xs" placeholder="Requirements (Optional)...">{{ old('requirements', $job->requirements) }}</textarea>
+                        </div>
 
-                    <div>
-                        <label for="responsibilities" class="form-label">Responsibilities <span class="text-red-500">*</span></label>
-                        <textarea name="responsibilities" id="responsibilities" rows="4" class="form-input text-xs" placeholder="List the responsibilities (one per line, accepts HTML)..." required>{{ old('responsibilities', $job->responsibilities) }}</textarea>
+                        <div>
+                            <label for="responsibilities" class="form-label">Responsibilities <span class="text-gray-400 font-normal">(Optional)</span></label>
+                            <textarea name="responsibilities" id="responsibilities" rows="3" class="form-input text-xs" placeholder="Responsibilities (Optional)...">{{ old('responsibilities', $job->responsibilities) }}</textarea>
+                        </div>
                     </div>
                 </div>
 
                 <!-- File attachments requirement toggles -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-[#F7F8FA] p-4 rounded-xl border border-gray-200">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-[#F7F8FA] p-4 rounded-xl border border-gray-200">
+                    <!-- Requires Photo -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="text-xs font-bold text-gray-800">Profile Photo</span>
+                            <span class="text-[10px] text-gray-500">Require candidate headshot.</span>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" name="requires_photo" value="1" class="sr-only peer" {{ $job->requires_photo ?? true ? 'checked' : '' }}>
+                            <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#FF6B00]"></div>
+                        </label>
+                    </div>
+
                     <!-- Requires CV -->
                     <div class="flex items-center justify-between">
                         <div class="flex flex-col">
-                            <span class="text-xs font-bold text-gray-800">Require CV upload</span>
-                            <span class="text-[10px] text-gray-500">Candidates must upload a PDF/Word resume.</span>
+                            <span class="text-xs font-bold text-gray-800">Require CV / Resume</span>
+                            <span class="text-[10px] text-gray-500">Require document upload.</span>
                         </div>
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" name="requires_cv" value="1" class="sr-only peer" {{ $job->requires_cv ? 'checked' : '' }}>
@@ -127,8 +135,8 @@
                     <!-- Requires Video -->
                     <div class="flex items-center justify-between">
                         <div class="flex flex-col">
-                            <span class="text-xs font-bold text-gray-800">Require Video Intro</span>
-                            <span class="text-[10px] text-gray-500">Candidates must record a short video intro.</span>
+                            <span class="text-xs font-bold text-gray-800">Require Video</span>
+                            <span class="text-[10px] text-gray-500">Require video intro.</span>
                         </div>
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" name="requires_video" x-model="requiresVideo" value="1" class="sr-only peer" {{ $job->requires_video ? 'checked' : '' }}>

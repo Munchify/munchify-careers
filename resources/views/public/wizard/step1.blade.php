@@ -69,6 +69,15 @@
                            value="{{ old('location', $wizardData['step1']['location'] ?? '') }}" required>
                 </div>
 
+                <!-- Candidate Profile Picture / Headshot Upload -->
+                <div class="p-4 bg-[#F8FAFC] border border-gray-200 rounded-2xl space-y-2">
+                    <label for="profile_photo" class="form-label text-gray-800 font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-user-circle text-[#FF6B00]"></i> Profile Picture / Headshot
+                    </label>
+                    <input type="file" name="profile_photo" id="profile_photo" accept="image/*" class="form-input bg-white p-2.5 text-xs">
+                    <span class="form-help block">Upload a clear photo of yourself (JPEG, PNG).</span>
+                </div>
+
                 <!-- Footer CTA actions -->
                 <div class="flex justify-end pt-4 border-t border-gray-100">
                     <button type="submit" class="btn btn-primary rounded-full px-8 py-3 font-bold">
