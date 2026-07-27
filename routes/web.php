@@ -130,6 +130,8 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
 
         // Gateway Configurations (SMTP & Hostpinnacle SMS)
         Route::post('/gateways', [SettingsController::class, 'saveGateways'])->name('settings.gateways.save');
+        Route::post('/test-email', [SettingsController::class, 'testEmail'])->name('settings.test-email');
+        Route::post('/test-sms', [SettingsController::class, 'testSms'])->name('settings.test-sms');
     });
 
     // Audit Log (Admin only)

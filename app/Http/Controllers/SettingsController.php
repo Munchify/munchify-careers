@@ -70,6 +70,55 @@ class SettingsController extends Controller
         return redirect()->route('settings.index')->with('success', 'SMTP Mail & SMS Gateway credentials saved to database.');
     }
 
+    public function testEmail(Request $request)
+    {
+        if (!Auth::user()->isAdmin()) {
+            return redirect()->back()->withErrors(['error' => 'Only Admins can send test emails.']);
+        }
+
+        $validated = $request->validate([
+            'test_email' => 'required|email|max:255',
+        ]);
+
+        try {
+            \Illuminate\Support\Facades\Mail::raw('This is a test email sent from Munchify Careers portal to verify Brevo SMTP configurations.', function ($message) use ($validated) {
+                $message->to($validated['test_email'])
+                        ->subject('Munchify Careers - SMTP Mail Gateway Test');
+            });
+
+            return redirect()->route('settings.index')->with('success', 'Test email dispatched successfully to ' . $validated['test_email']);
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Failed to send test email: ' . $e->getMessage()]);
+        }
+    }
+
+    public function testSms(Request $request)
+    {
+        if (!Auth::user()->isAdmin()) {
+            return redirect()->back()->withErrors(['error' => 'Only Admins can send test SMS.']);
+        }
+
+        $validated = $request->validate([
+            'test_phone' => 'required|string|max:20',
+        ]);
+
+        try {
+            $smsService = app(\App\Services\SmsService::class);
+            $success = $smsService->sendSms(
+                $validated['test_phone'],
+                'Munchify Careers Gateway Test: Hostpinnacle SMS integration is working successfully.'
+            );
+
+            if ($success) {
+                return redirect()->route('settings.index')->with('success', 'Test SMS dispatched successfully to ' . $validated['test_phone']);
+            } else {
+                return redirect()->back()->withErrors(['error' => 'Hostpinnacle SMS API returned failure. Check logs or gateway credentials.']);
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Failed to send test SMS: ' . $e->getMessage()]);
+        }
+    }
+
     public function saveTeamUser(Request $request)
     {
         $userId = $request->input('id');

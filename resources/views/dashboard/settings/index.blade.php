@@ -417,6 +417,45 @@
                 </button>
             </div>
         </form>
+
+        <!-- Test Triggers Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-200">
+            <!-- Test Email Form -->
+            <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4">
+                <div class="flex items-center gap-2 border-b border-gray-100 pb-3">
+                    <i class="fa-solid fa-paper-plane text-blue-600 text-base"></i>
+                    <h3 class="font-extrabold text-sm text-gray-800">Test Brevo SMTP Email Gateway</h3>
+                </div>
+                <form action="{{ route('settings.test-email') }}" method="POST" class="space-y-3">
+                    @csrf
+                    <div>
+                        <label class="form-label text-xs">Recipient Email Address</label>
+                        <input type="email" name="test_email" value="charlesvaltron@gmail.com" class="form-input text-xs" required placeholder="name@example.com">
+                    </div>
+                    <button type="submit" class="btn btn-secondary py-2 px-5 text-xs font-bold rounded-xl w-full flex items-center justify-center gap-2 border-blue-200 text-blue-700 hover:bg-blue-50">
+                        <i class="fa-solid fa-paper-plane"></i> Dispatch Test Email
+                    </button>
+                </form>
+            </div>
+
+            <!-- Test SMS Form -->
+            <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4">
+                <div class="flex items-center gap-2 border-b border-gray-100 pb-3">
+                    <i class="fa-solid fa-mobile-screen text-orange-600 text-base"></i>
+                    <h3 class="font-extrabold text-sm text-gray-800">Test Hostpinnacle SMS Gateway</h3>
+                </div>
+                <form action="{{ route('settings.test-sms') }}" method="POST" class="space-y-3">
+                    @csrf
+                    <div>
+                        <label class="form-label text-xs">Recipient Phone Number (Kenya)</label>
+                        <input type="text" name="test_phone" value="254" class="form-input text-xs" required placeholder="2547XXXXXXXX">
+                    </div>
+                    <button type="submit" class="btn btn-secondary py-2 px-5 text-xs font-bold rounded-xl w-full flex items-center justify-center gap-2 border-orange-200 text-orange-700 hover:bg-orange-50">
+                        <i class="fa-solid fa-comments"></i> Dispatch Test SMS
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
     @endif
 
