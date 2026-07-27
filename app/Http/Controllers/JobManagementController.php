@@ -321,4 +321,39 @@ class JobManagementController extends Controller
 
         return redirect()->route('jobs.manage')->with('success', "Job duplicated successfully as '{$newJob->title}'.");
     }
+
+    public function aiGenerate(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+        ]);
+
+        $title = trim($validated['title']);
+        $role = strtolower($title);
+
+        if (str_contains($role, 'rider') || str_contains($role, 'driver') || str_contains($role, 'delivery') || str_contains($role, 'courier')) {
+            $description = "We are seeking a reliable and punctual {$title} to join our logistics operations at Munchify App Maseno Campus. You will be responsible for safe, prompt campus order dispatches and ensuring excellent customer satisfaction.";
+            $requirements = "• Valid motorbike driving license and helmet.\n• Familiarity with Maseno University campus routes and residence halls.\n• Active smartphone with WhatsApp capability.\n• Strong communication skills and professional demeanor.";
+            $responsibilities = "• Inspect motorbike daily before dispatch operations.\n• Pick up order parcels promptly from campus partner kitchens.\n• Deliver orders safely to students and staff across Maseno campus.\n• Confirm order completion on the Munchify App.";
+        } elseif (str_contains($role, 'kitchen') || str_contains($role, 'chef') || str_contains($role, 'cook') || str_contains($role, 'baker')) {
+            $description = "Munchify App is looking for a passionate {$title} to prepare fresh, high-quality meals for university students and staff. You will uphold health, food safety, and kitchen quality standards.";
+            $requirements = "• Previous culinary or kitchen experience in food service.\n• Knowledge of food safety, hygiene, and sanitization standards.\n• Ability to work efficiently in a high-speed team environment.\n• Valid food handler medical certificate.";
+            $responsibilities = "• Prepare food ingredients and cook meals according to standard recipes.\n• Maintain strict kitchen cleanliness and food safety protocols.\n• Monitor inventory levels and communicate ingredient needs.\n• Package food items for dispatch delivery.";
+        } elseif (str_contains($role, 'developer') || str_contains($role, 'engineer') || str_contains($role, 'software') || str_contains($role, 'tech')) {
+            $description = "We are seeking a talented {$title} to design, build, and maintain high-performance digital systems powering Munchify's campus recruitment and delivery platforms.";
+            $requirements = "• Hands-on proficiency with modern web frameworks and databases.\n• Strong understanding of RESTful APIs, Git workflows, and security best practices.\n• Problem-solving mindset with attention to code performance and UI/UX.\n• Degree or equivalent practical experience in Computer Science or IT.";
+            $responsibilities = "• Architect and implement clean, scalable application modules.\n• Collaborate with cross-functional teams to integrate new features.\n• Troubleshoot, debug, and optimize application performance.\n• Write clean, maintainable code with clear documentation.";
+        } else {
+            $description = "Munchify App is seeking a dedicated {$title} to join our growing team. In this role, you will support daily operations, drive high standards of efficiency, and contribute to campus operations excellence.";
+            $requirements = "• Strong organizational, time-management, and problem-solving skills.\n• Effective written and verbal communication abilities.\n• Ability to work independently and collaboratively in a fast-paced environment.\n• Relevant background or educational qualifications.";
+            $responsibilities = "• Execute daily operational workflows aligned with department goals.\n• Maintain clear records, reports, and team communication.\n• Uphold Munchify quality standards and operational compliance.\n• Collaborate with team leads on continuous improvement initiatives.";
+        }
+
+        return response()->json([
+            'success' => true,
+            'description' => $description,
+            'requirements' => $requirements,
+            'responsibilities' => $responsibilities,
+        ]);
+    }
 }

@@ -56,6 +56,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
         Route::middleware(['role:admin,hr_manager'])->group(function () {
             Route::get('/create', [JobManagementController::class, 'create'])->name('jobs.create');
             Route::post('/create', [JobManagementController::class, 'store']);
+            Route::post('/ai-generate', [JobManagementController::class, 'aiGenerate'])->name('jobs.ai-generate');
             Route::get('/{id}/edit', [JobManagementController::class, 'edit'])->name('jobs.edit');
             Route::post('/{id}/edit', [JobManagementController::class, 'update']);
             Route::post('/{id}/status', [JobManagementController::class, 'updateStatus'])->name('jobs.status');

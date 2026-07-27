@@ -92,20 +92,37 @@
 
                 <!-- Primary textareas description/requirements/responsibilities -->
                 <div class="space-y-4">
+                    <div class="flex items-center justify-between bg-gradient-to-r from-amber-50 to-orange-50 p-3.5 rounded-xl border border-amber-200/80">
+                        <div class="flex items-center gap-2.5">
+                            <span class="w-8 h-8 rounded-lg bg-[#FF6B00] text-white flex items-center justify-center font-bold text-xs shadow-md shadow-[#FF6B00]/20">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            </span>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-900">AI Job Content Assistant</h4>
+                                <p class="text-[10px] text-gray-500">Auto-generate professional description, requirements & responsibilities based on job title.</p>
+                            </div>
+                        </div>
+                        <button type="button" @click="generateAiContent()" :disabled="generatingAi" class="btn bg-[#111318] hover:bg-black text-white btn-sm py-1.5 px-4 font-bold text-[11px] rounded-xl flex items-center gap-2 transition shadow-sm">
+                            <i class="fa-solid fa-sparkles text-[#FFD233]" x-show="!generatingAi"></i>
+                            <i class="fa-solid fa-circle-notch fa-spin text-[#FFD233]" x-show="generatingAi" style="display: none;"></i>
+                            <span x-text="generatingAi ? 'Generating...' : 'Auto-Generate Specs'"></span>
+                        </button>
+                    </div>
+
                     <div>
                         <label for="description" class="form-label">Job Description <span class="text-gray-400 font-normal">(Optional)</span></label>
-                        <textarea name="description" id="description" rows="3" class="form-input text-xs" placeholder="Briefly outline the job description (Optional)..."></textarea>
+                        <textarea name="description" id="description" x-model="description" rows="3" class="form-input text-xs" placeholder="Briefly outline the job description (Optional)..."></textarea>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label for="requirements" class="form-label">Requirements <span class="text-gray-400 font-normal">(Optional)</span></label>
-                            <textarea name="requirements" id="requirements" rows="3" class="form-input text-xs" placeholder="Requirements (Optional)..."></textarea>
+                            <textarea name="requirements" id="requirements" x-model="requirements" rows="3" class="form-input text-xs" placeholder="Requirements (Optional)..."></textarea>
                         </div>
 
                         <div>
                             <label for="responsibilities" class="form-label">Responsibilities <span class="text-gray-400 font-normal">(Optional)</span></label>
-                            <textarea name="responsibilities" id="responsibilities" rows="3" class="form-input text-xs" placeholder="Responsibilities (Optional)..."></textarea>
+                            <textarea name="responsibilities" id="responsibilities" x-model="responsibilities" rows="3" class="form-input text-xs" placeholder="Responsibilities (Optional)..."></textarea>
                         </div>
                     </div>
                 </div>
@@ -303,7 +320,10 @@
     function jobFormHandler() {
         return {
             requiresVideo: false,
-            screeningQuestions: [],
+            description: '',
+            requirements: '',
+            responsibilities: '',
+            generatingAi: false,
             addQuestion() {
                 this.screeningQuestions.push({
                     question: '',
@@ -315,6 +335,38 @@
             },
             removeQuestion(index) {
                 this.screeningQuestions.splice(index, 1);
+            },
+            async generateAiContent() {
+                const titleInput = document.getElementById('title')?.value?.trim();
+                if (!titleInput) {
+                    alert('Please enter a Job Title first so the AI bot can tailor the description.');
+                    return;
+                }
+                this.generatingAi = true;
+                
+                try {
+                    const response = await fetch('/dashboard/jobs/ai-generate', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({ title: titleInput })
+                    });
+                    
+                    const data = await response.json();
+                    if (data.success) {
+                        this.description = data.description;
+                        this.requirements = data.requirements;
+                        this.responsibilities = data.responsibilities;
+                    } else {
+                        alert(data.message || 'Failed to generate AI content.');
+                    }
+                } catch (e) {
+                    alert('Error connecting to AI assistant.');
+                } finally {
+                    this.generatingAi = false;
+                }
             }
         }
     }
